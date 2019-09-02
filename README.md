@@ -33,3 +33,5 @@ Here's what the example config file looks like:
     "SERVER_URL" : "SERVER_URL",
     "SERVER_PORT" : "SERVER_PORT"
 }
+
+Enjoy :)
