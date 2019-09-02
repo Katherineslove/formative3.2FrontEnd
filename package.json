@@ -15,5 +15,13 @@
   "bugs": {
     "url": "https://github.com/Katherineslove/formative3.2FrontEnd/issues"
   },
-  "homepage": "https://github.com/Katherineslove/formative3.2FrontEnd#readme"
+  "homepage": "https://github.com/Katherineslove/formative3.2FrontEnd#readme",
+  "dependencies": {
+    "bootstrap": "^4.3.1",
+    "jquery": "^3.4.1",
+    "popper.js": "^1.15.0"
+  },
+  "devDependencies": {
+    "grunt": "^1.0.4"
+  }
 }
