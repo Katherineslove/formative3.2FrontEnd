@@ -1,0 +1,19 @@
+{
+  "name": "formative3.2frontend",
+  "version": "1.0.0",
+  "description": "Front End for Formative 3.2",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Katherineslove/formative3.2FrontEnd.git"
+  },
+  "author": "Andy Ball, John Bretherton, Katherine Love",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Katherineslove/formative3.2FrontEnd/issues"
+  },
+  "homepage": "https://github.com/Katherineslove/formative3.2FrontEnd#readme"
+}
