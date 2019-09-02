@@ -33,12 +33,3 @@ Here's what the example config file looks like:
     "SERVER_URL" : "SERVER_URL",
     "SERVER_PORT" : "SERVER_PORT"
 }
-
-
-# STYLE GUIDE
-
-- For JavaScript, we use: single quotes for values; camelcase for variable and function names; spaces around operators; 4-space indentation; and other practices recommended by [W3Schools](https://www.w3schools.com/js/js_conventions.asp). We are starting to use ES6 for variable and function declarations.
-
-- We are using **Bootstrap** for CSS layout and styling.
-
-- HTML is written in line with [W3Schools guidelines](https://www.w3schools.com/html/html5_syntax.asp)
