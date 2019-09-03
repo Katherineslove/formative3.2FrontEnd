@@ -5,7 +5,7 @@
 
 # Installation
 
-This is the **server** part of a 2-part project. The server side is located here: https://github.com/JonnySaito/formative-3.2-server
+This is the **front-end** part of a 2-part project. The server side is located here: https://github.com/JonnySaito/formative-3.2-server
 
 To copy this project, you need to have a version of **Node JS** and **npm** installed on your machine.
 
@@ -29,7 +29,7 @@ You also need to create a **config.json** file in your root directory and paste 
 
 Here's what the example config file looks like:
 
->${
+>{
     "SERVER_URL" : "SERVER_URL",
     "SERVER_PORT" : "SERVER_PORT"
 }
