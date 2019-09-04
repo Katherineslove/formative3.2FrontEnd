@@ -20,33 +20,33 @@ $(document).ready(function(){
   });
 
 	// do stuff when the add product button is clicked
-	$('#addProductButton').click(function(){
+	$('#addProjectButton').click(function(){
 		event.preventDefault();
 
 		let project_id;
 		let author_id;
 		let author_name;
 		let project_name;
-		let screenshotURL;
+		let screenshot_URL;
 		let link;
 
-		$.ajax({
-			url: `${url}/addProject`,
-			type: 'POST',
-			data: {
-				projectId: project_id,
-				// authorId: author_id,
-				authorName: author_name,
-				projectName: project_name,
-				screenshotURL: screenshot_URL
-			},
-			success: function(data){
-				console.log(data);
-				},
-			error: function(err){
-				console.log('got an error!');
-				console.log(err);
-			}
-		});
+		// $.ajax({
+		// 	url: `${url}/addProject`,
+		// 	type: 'POST',
+		// 	data: {
+		// 		projectId: project_id,
+		// 		// authorId: author_id,
+		// 		authorName: author_name,
+		// 		projectName: project_name,
+		// 		screenshotURL: screenshot_URL
+		// 	},
+		// 	success: function(data){
+		// 		console.log(data);
+		// 		},
+		// 	error: function(err){
+		// 		console.log('got an error!');
+		// 		console.log(err);
+		// 	}
+		// });
 	});
 });
