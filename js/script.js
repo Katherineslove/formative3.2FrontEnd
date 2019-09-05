@@ -70,7 +70,6 @@ $('#addProjectButton').click(function(){
 	checkField($('#imageURL'));
 	checkField($('#codeURL'));
 
-
 });
 
 // check if the form fields are valid on change
@@ -184,6 +183,8 @@ $('#loginForm').submit(function(){
 		else {
 			console.log('ok good to go');
 			$('#authForm').modal('hide');
+			$('#loginBtn').hide();
+			$('#logoutBtn').removeClass('d-none')
 			// Ajax request
 		}
 	// }
@@ -193,14 +194,14 @@ $('#loginForm').submit(function(){
 	// }
 });
 
-//  LOGOUT BUTTON CLICK EVENT
+// Log out button
 $('#logoutBtn').click(function(){
-		sessionStorage.clear();
+    sessionStorage.clear();
 
-		if(sessionStorage['userID']){
-			alert('401, permission denied');
-			return;
-		}
+    if(sessionStorage['userID']){
+      alert('401, permission denied');
+      return;
+    }
 
     getProductsData();
     $('#loginBtn').show();
