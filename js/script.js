@@ -46,15 +46,15 @@ checkField = (field) => {
 }
 
 // THIS NEEDS TO BE CREATED!!!!!!!!!!!!
-		// getProjects = () => {
+	// getProjects = () => {
 		//     $.ajax({
 		//         url: `${url}/allProducts`,
 		//         type: 'GET',
 		//         dataType: 'json',
 		//         success:function(data){
-		//             $('#productList').empty();
+		//             $('#projectList').empty();
 		//             for (var i = 0; i < data.length; i++) {
-		//                 let product = `
+		//                 let project = `
 		//                     <li
 		//                         class="list-group-item d-flex justify-content-between align-items-center productItem"
 		//                         data-id="${data[i]._id}"
@@ -69,9 +69,9 @@ checkField = (field) => {
 		//                                             </div>`;
 		//                             }
 		//                         }
-		//                 product += `</li>`;
+		//                 project += `</li>`;
 		//
-		//                 $('#productList').append(product);
+		//                 $('#projectList').append(product);
 		//             }
 		//         },
 		//         error: function(err){
