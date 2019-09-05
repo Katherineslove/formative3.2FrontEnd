@@ -1,25 +1,25 @@
+let serverURL;
+let serverPort;
+let url;
+let editing = false;
+
+// get configs and request all projects
+$.ajax({
+url: 'config.json',
+type: 'GET',
+dataType: 'json',
+success:function(keys){
+  serverURL = keys['SERVER_URL'];
+  serverPort = keys['SERVER_PORT'];
+  url = `${serverURL}:${serverPort}`;
+  // getProjects();
+},
+error: function(){
+  console.log('cannot find config.json file, cannot run application');
+}
+});
+
 $(document).ready(function(){
-	let serverURL;
-	let serverPort;
-	let url;
-	let editing = false;
-
-	// get configs and request all projects
-	$.ajax({
-    url: 'config.json',
-    type: 'GET',
-    dataType: 'json',
-    success:function(keys){
-      serverURL = keys['SERVER_URL'];
-      serverPort = keys['SERVER_PORT'];
-      url = `${serverURL}:${serverPort}`;
-      // getProjects();
-    },
-    error: function(){
-      console.log('cannot find config.json file, cannot run application');
-    }
-  });
-
 	// check if a field has a value
 	checkField = (field) => {
 		$(field).removeClass('is-invalid');
@@ -88,8 +88,9 @@ $('#registerForm').submit(function(){
 	checkField($('#rPassword'));
 	checkField($('#rConfirmPassword'));
 
-	let rPassword = $('#rPassword');
-	let rConfirmPassword = $('#rConfirmPassword');
+	let rUsername = $('#rUsername').val();
+	let rPassword = $('#rPassword').val();
+	let rConfirmPassword = $('#rConfirmPassword').val();
 
 	if ($('#rUsername').hasClass('is-invalid') || $('#rPassword').hasClass('is-invalid') || $('#rConfirmPassword').hasClass('is-invalid')){
 		alert('Please enter the required value(s).');
@@ -99,12 +100,23 @@ $('#registerForm').submit(function(){
 		} else {
 			console.log('ok good to go');
 			// Ajax request
+			$.ajax({
+	            url: `${url}/authors`,
+	            type: 'POST',
+	            data: {
+	                username: rUsername,
+	                password: rPassword
+	            },
+	            success:function(result){
+	                console.log(result);
+	            },
+	            error:function(err){
+	                console.log(err);
+	                console.log('Something went wrong with registering a new user');
+	            }
+	        })
 		}
 	}
-	// if (rpassword !== rconfirmPassword){
-	// 	alert('Please enter the required value(s).')
-		// ajax post request to create new database item
-	// }
 });
 
 // When the LOGIN button is clicked
