@@ -80,64 +80,60 @@ $('#registerTabBtn').click(function(){
 });
 
 
-// do stuff when the add product button is clicked
+// When the REGISTER button is clicked
 $('#registerForm').submit(function(){
 	event.preventDefault();
 
 	checkField($('#rUsername'));
 	checkField($('#rPassword'));
 	checkField($('#rConfirmPassword'));
-	
+
 	let rPassword = $('#rPassword');
 	let rConfirmPassword = $('#rConfirmPassword');
 
 	if ($('#rUsername').hasClass('is-invalid') || $('#rPassword').hasClass('is-invalid') || $('#rConfirmPassword').hasClass('is-invalid')){
-		alert('Please enter the required value(s).')
+		alert('Please enter the required value(s).');
+	} else {
+		if (rPassword !== rConfirmPassword) {
+			alert('Sorry, your passwords do not match.');
+		} else {
+			console.log('ok good to go');
+			// Ajax request
+		}
 	}
-	if (rpassword !== rconfirmPassword){
+	// if (rpassword !== rconfirmPassword){
+	// 	alert('Please enter the required value(s).')
 		// ajax post request to create new database item
-	}
+	// }
 });
-// REGISTER SUBMIT EVENT
-// $('#registerForm').submit(function(){
-//     event.preventDefault();
-//     if (sessionStorage['userID']) {
-//         alert('401, permission denied');
-//         return;
-//     };
-//     const username = $('#rUsername').val();
-//     const password = $('#rPassword').val();
-//     const confirmPassword = $('#rConfirmPassword').val();
-//
-//     if(username.length === 0){
-//         console.log('please enter a username');
-//     } else if(password.length === 0){
-//         console.log('please enter a password');
-//     } else if(confirmPassword.length === 0){
-//         console.log('please confirm your password');
-//     } else if(password !== confirmPassword){
-//         console.log('your passwords do not match');
-//     } else {
-// 		console.log('registering is OK!');
-// 		// AJAX REQUEST
-//         // $.ajax({
-//         //     url: `${url}/users`,
-//         //     type: 'POST',
-//         //     data: {
-//         //         username: username,
-//         //         email: email,
-//         //         password: password
-//         //     },
-//         //     success:function(result){
-//         //         console.log(result);
-//         //     },
-//         //     error:function(err){
-//         //         console.log(err);
-//         //         console.log('Something went wrong with registering a new user');
-//         //     }
-//         // })
-//     }
-// });
+
+// When the LOGIN button is clicked
+$('#loginForm').submit(function(){
+	event.preventDefault();
+
+	checkField($('#lUsername'));
+	checkField($('#lPassword'));
+
+	let lPassword = $('#lPassword');
+
+	if ($('#lUsername').hasClass('is-invalid') || $('#lPassword').hasClass('is-invalid')){
+		alert('Please enter the required value(s).');
+	}
+	// else {
+	// 	// server-side validation of password: if (lPassword !== lConfirmPassword) {
+	// 	// 	alert('Sorry, your passwords do not match.');
+	// 	}
+		else {
+			console.log('ok good to go');
+			// Ajax request
+		}
+	// }
+	// if (rpassword !== rconfirmPassword){
+	// 	alert('Please enter the required value(s).')
+		// ajax post request to create new database item
+	// }
+});
+
 
 //  LOGOUT BUTTON CLICK EVENT
 $('#logoutBtn').click(function(){
