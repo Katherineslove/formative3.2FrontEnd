@@ -168,31 +168,58 @@ $('#loginForm').submit(function(){
     return;
   }
 
-	checkField($('#lUsername'));
-	checkField($('#lPassword'));
+	// checkField($('#lUsername'));
+	// checkField($('#lPassword'));
 
-	let lPassword = $('#lPassword');
+	const username = $('#lUsername').val();
+ 	const password = $('#lPassword').val();
 
-	if ($('#lUsername').hasClass('is-invalid') || $('#lPassword').hasClass('is-invalid')){
-		alert('Please enter the required value(s).');
-	}
-	// else {
-	// 	// server-side validation of password: if (lPassword !== lConfirmPassword) {
-	// 	// 	alert('Sorry, your passwords do not match.');
-	// 	}
-		else {
+	if(username.length === 0){
+        console.log('please enter a username');
+    } else if(password.length === 0){
+        console.log('please enter a password');
+    } else {
 			console.log('ok good to go');
 			$('#authForm').modal('hide');
 			$('#loginBtn').hide();
-			$('#logoutBtn').removeClass('d-none')
-			// Ajax request
-		}
-	// }
-	// if (rpassword !== rconfirmPassword){
-	// 	alert('Please enter the required value(s).')
-		// ajax post request to create new database item
-	// }
+			$('#logoutBtn').removeClass('d-none');
+
+			$.ajax({
+				url: `${url}/getAuthors`,
+				type: 'POST',
+        data: {
+            username: username,
+            password: password
+        },
+			})
+
+
+
+    }
 });
+
+
+
+// 	if ($('#lUsername').hasClass('is-invalid') || $('#lPassword').hasClass('is-invalid')){
+// 		alert('Please enter the required value(s).');
+// 	}
+// 	// else {
+// 	// 	// server-side validation of password: if (lPassword !== lConfirmPassword) {
+// 	// 	// 	alert('Sorry, your passwords do not match.');
+// 	// 	}
+// 		else {
+// 			console.log('ok good to go');
+// 			$('#authForm').modal('hide');
+// 			$('#loginBtn').hide();
+// 			$('#logoutBtn').removeClass('d-none')
+// 			// Ajax request
+// 		}
+// 	// }
+// 	// if (rpassword !== rconfirmPassword){
+// 	// 	alert('Please enter the required value(s).')
+// 		// ajax post request to create new database item
+// 	// }
+// });
 
 // Log out button
 $('#logoutBtn').click(function(){
