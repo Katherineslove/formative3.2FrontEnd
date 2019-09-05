@@ -8,7 +8,7 @@
     <title>Formative 3.2</title>
   </head>
   <body>
-    
+
     <div class="navbar navbar-dark bg-dark shadow-sm">
         <div class="container d-flex justify-content-between">
             <a href="#" class="navbar-brand d-flex align-items-center">
@@ -17,7 +17,7 @@
 
             <!-- Login & Register Button -->
             <button id="loginBtn" type="button" class="btn btn-outline-light" data-toggle="modal" data-target="#authForm">
-                Login...
+                Login / Register
             </button>
 
             <button id="logoutBtn" type="button" class="btn btn-outline-light d-none" data-toggle="modal" data-target="#authForm">
@@ -61,32 +61,62 @@
         </div>
       </div>
     </div>
-
+    <!-- Modal popup for register & login -->
     <div class="modal fade" id="authForm" tabindex="-1" role="dialog">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
+                    <!-- The tabs below let us switch between login and register forms -->
                     <ul class="nav nav-tabs nav-fill w-100">
                         <li class="nav-item">
-                            <a class="nav-link" id="loginTabBtn">Login</a>
+                            <a class="nav-link active" id="loginTabBtn">Login</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="registerTabBtn">Register</a>
                         </li>
                     </ul>
+                    <!-- Close button for modal -->
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
+                    <!-- Login form -->
                     <form id="loginForm" autocomplete="false">
                         <div class="form-group">
                             <label for="lUsername">Username</label>
-                            <input type="text" name="lUsername" id="lUsername" class="form-control">
+                            <input type="text" name="lUsername" id="lUsername" class="form-control is-valid">
+                            <div class="valid-feedback">
+                                Username looks good!
+                            </div>
                         </div>
                         <div class="form-group">
                             <label for="lPassword">Password</label>
-                            <input type="password" name="lPassword" id="lPassword" class="form-control" autocomplete="new-password">
+                            <input type="password" name="lPassword" id="lPassword" class="form-control is-valid">
+                            <div class="valid-feedback">
+                                Password looks good!
+                            </div>
                         </div>
                         <div class="form-group">
-                            <button type="submit" name="button" class="btn btn-primary btn-block">Login</button>
+                            <button type="submit" name="button" class="btn btn-secondary btn-block">Login</button>
+                        </div>
+                    </form>
+                    <!-- Register form -->
+                    <form id="registerForm" autocomplete="false" class="d-none">
+                        <div class="form-group">
+                            <label for="rUsername">Username</label>
+                            <input type="text" name="rUsername" id="rUsername" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="rPassword">Password</label>
+                            <input type="password" name="rPassword" id="rPassword" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="rConfirmPassword">Confirm Password</label>
+                            <input type="password" name="rConfirmPassword" id="rConfirmPassword" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" name="button" class="btn btn-info btn-block">Register</button>
                         </div>
                     </form>
                 </div>

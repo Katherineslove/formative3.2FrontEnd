@@ -2,6 +2,7 @@ $(document).ready(function(){
 	let serverURL;
 	let serverPort;
 	let url;
+	let editing = false;
 
 	// get configs and request all projects
 	$.ajax({
@@ -49,4 +50,78 @@ $(document).ready(function(){
 		// 	}
 		// });
 	});
+});
+
+
+
+// LOGIN TAB BUTTON CLICK EVENT
+$('#loginTabBtn').click(function(){
+    event.preventDefault();
+    $('.nav-link').removeClass('active');
+    $(this).addClass('active');
+    $('#loginForm').show();
+    $('#registerForm').hide();
+});
+// REGISTER TAB BUTTON CLICK EVENT
+$('#registerTabBtn').click(function(){
+    event.preventDefault();
+    $('.nav-link').removeClass('active');
+    $(this).addClass('active');
+    $('#loginForm').hide();
+    $('#registerForm').removeClass('d-none').show();
+});
+// REGISTER SUBMIT EVENT
+$('#registerForm').submit(function(){
+    event.preventDefault();
+    if (sessionStorage['userID']) {
+        alert('401, permission denied');
+        return;
+    };
+    const username = $('#rUsername').val();
+    const password = $('#rPassword').val();
+    const confirmPassword = $('#rConfirmPassword').val();
+
+    if(username.length === 0){
+        console.log('please enter a username');
+    } else if(password.length === 0){
+        console.log('please enter a password');
+    } else if(confirmPassword.length === 0){
+        console.log('please confirm your password');
+    } else if(password !== confirmPassword){
+        console.log('your passwords do not match');
+    } else {
+		console.log('registering is OK!');
+		// AJAX REQUEST
+        // $.ajax({
+        //     url: `${url}/users`,
+        //     type: 'POST',
+        //     data: {
+        //         username: username,
+        //         email: email,
+        //         password: password
+        //     },
+        //     success:function(result){
+        //         console.log(result);
+        //     },
+        //     error:function(err){
+        //         console.log(err);
+        //         console.log('Something went wrong with registering a new user');
+        //     }
+        // })
+    }
+});
+
+//  LOGOUT BUTTON CLICK EVENT
+$('#logoutBtn').click(function(){
+    if (!sessionStorage['userID']) {
+        alert('401, permission denied');
+        return;
+    };
+    sessionStorage.clear();
+    getProductsData();
+    $('#loginBtn').show();
+    $('#logoutBtn').addClass('d-none');
+    $('#addProductSection').addClass('d-none');
+    $('#lUsername').val(null);
+    $('#lPassword').val(null);
 });
