@@ -112,31 +112,51 @@ $('#registerTabBtn').click(function(){
 $('#registerForm').submit(function(){
 	event.preventDefault();
 
-	if(sessionStorage['userID']){
-    alert('401, permission denied');
-    return;
-  }
+	// if(sessionStorage['userID']){
+  //   alert('401, permission denied');
+  //   return;
+  // }
 
 	checkField($('#rUsername'));
 	checkField($('#rPassword'));
 	checkField($('#rConfirmPassword'));
 
-	let rPassword = $('#rPassword');
-	let rConfirmPassword = $('#rConfirmPassword');
+	const rPassword = $('#rPassword');
+	const rConfirmPassword = $('#rConfirmPassword');
 
 	if ($('#rUsername').hasClass('is-invalid') || $('#rPassword').hasClass('is-invalid') || $('#rConfirmPassword').hasClass('is-invalid')){
 		alert('Please enter the required value(s).');
 	} else {
-		if (rPassword !== rConfirmPassword) {
-			alert('Sorry, your passwords do not match.');
-		} else {
-			console.log('ok good to go');
-			// Ajax request
-		}
+		// console.log('you are registered');
+		if(rPassword !== rConfirmPassword){
+        // We also need to check if the two passwords match
+        console.log('your passwords do not match');
+    } else {
+        // Once all the validation has passed we run our ajax request to our register route
+        $.ajax({
+            url: `${url}/users`,
+            type: 'POST',
+            data: {
+                username: username,
+                email: email,
+                password: password
+            },
+            success:function(result){
+                console.log(result);
+            },
+            error:function(err){
+                console.log(err);
+                console.log('Something went wrong with registering a new user');
+            }
+        })
+    }
 	}
+
+
+
 	// if (rpassword !== rconfirmPassword){
 	// 	alert('Please enter the required value(s).')
-		// ajax post request to create new database item
+	// 	ajax post request to create new database item
 	// }
 });
 
