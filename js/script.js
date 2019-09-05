@@ -20,35 +20,43 @@ $(document).ready(function(){
     }
   });
 
+	// check if a field has a value
+	checkField = (field) => {
+		$(field).removeClass('is-invalid');
+
+		if (!field.val()) {
+			$(field).addClass('is-invalid');
+		}
+	}
+
 	// do stuff when the add product button is clicked
 	$('#addProjectButton').click(function(){
 		event.preventDefault();
 
-		let project_id;
-		let author_id;
-		let author_name;
-		let project_name;
-		let screenshot_URL;
-		let link;
+		checkField($('#projectName'));
+		checkField($('#authorName'));
+		checkField($('#imageURL'));
+		checkField($('#codeURL'));
 
-		// $.ajax({
-		// 	url: `${url}/addProject`,
-		// 	type: 'POST',
-		// 	data: {
-		// 		projectId: project_id,
-		// 		// authorId: author_id,
-		// 		authorName: author_name,
-		// 		projectName: project_name,
-		// 		screenshotURL: screenshot_URL
-		// 	},
-		// 	success: function(data){
-		// 		console.log(data);
-		// 		},
-		// 	error: function(err){
-		// 		console.log('got an error!');
-		// 		console.log(err);
-		// 	}
-		// });
+		if ($('#projectName').hasClass('is-invalid') || $('#authorName').hasClass('is-invalid') || $('#imageURL').hasClass('is-invalid') || $('#codeURL').hasClass('is-invalid')){
+			alert('Please enter the required value(s).')
+		} else {
+			// ajax post request to create new database item
+		}
+	});
+
+	// check if the form fields are valid on change
+	$('#projectName').change(function(){
+		checkField($('#projectName'));
+	});
+	$('#authorName').change(function(){
+		checkField($('#authorName'));
+	});
+	$('#imageURL').change(function(){
+		checkField($('#imageURL'));
+	});
+	$('#codeURL').change(function(){
+		checkField($('#codeURL'));
 	});
 });
 
@@ -70,8 +78,11 @@ $('#registerTabBtn').click(function(){
     $('#loginForm').hide();
     $('#registerForm').removeClass('d-none').show();
 });
-// REGISTER SUBMIT EVENT
+
+
+// When the REGISTER button is clicked
 $('#registerForm').submit(function(){
+<<<<<<< HEAD
     event.preventDefault();
     if (sessionStorage['userID']) {
         alert('401, permission denied');
@@ -108,7 +119,60 @@ $('#registerForm').submit(function(){
             }
         })
     }
+=======
+	event.preventDefault();
+
+	checkField($('#rUsername'));
+	checkField($('#rPassword'));
+	checkField($('#rConfirmPassword'));
+
+	let rPassword = $('#rPassword');
+	let rConfirmPassword = $('#rConfirmPassword');
+
+	if ($('#rUsername').hasClass('is-invalid') || $('#rPassword').hasClass('is-invalid') || $('#rConfirmPassword').hasClass('is-invalid')){
+		alert('Please enter the required value(s).');
+	} else {
+		if (rPassword !== rConfirmPassword) {
+			alert('Sorry, your passwords do not match.');
+		} else {
+			console.log('ok good to go');
+			// Ajax request
+		}
+	}
+	// if (rpassword !== rconfirmPassword){
+	// 	alert('Please enter the required value(s).')
+		// ajax post request to create new database item
+	// }
+>>>>>>> 4156a382a3ca9ee12bc698dc1311a7343ac35452
 });
+
+// When the LOGIN button is clicked
+$('#loginForm').submit(function(){
+	event.preventDefault();
+
+	checkField($('#lUsername'));
+	checkField($('#lPassword'));
+
+	let lPassword = $('#lPassword');
+
+	if ($('#lUsername').hasClass('is-invalid') || $('#lPassword').hasClass('is-invalid')){
+		alert('Please enter the required value(s).');
+	}
+	// else {
+	// 	// server-side validation of password: if (lPassword !== lConfirmPassword) {
+	// 	// 	alert('Sorry, your passwords do not match.');
+	// 	}
+		else {
+			console.log('ok good to go');
+			// Ajax request
+		}
+	// }
+	// if (rpassword !== rconfirmPassword){
+	// 	alert('Please enter the required value(s).')
+		// ajax post request to create new database item
+	// }
+});
+
 
 //  LOGOUT BUTTON CLICK EVENT
 $('#logoutBtn').click(function(){
