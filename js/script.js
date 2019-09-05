@@ -21,8 +21,9 @@ $(document).ready(function(){
 
 	// do stuff when the add product button is clicked
 	$('#addProductButton').click(function(){
-		event.preventDefault();
+		console.log('got a click');
 
+		event.preventDefault();
 		let project_id;
 		let author_id;
 		let author_name;
@@ -42,6 +43,7 @@ $(document).ready(function(){
 			},
 			success: function(data){
 				console.log(data);
+				console.log('sent a request');
 				},
 			error: function(err){
 				console.log('got an error!');
