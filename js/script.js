@@ -60,8 +60,6 @@ $(document).ready(function(){
 	});
 });
 
-
-
 // LOGIN TAB BUTTON CLICK EVENT
 $('#loginTabBtn').click(function(){
     event.preventDefault();
@@ -70,6 +68,7 @@ $('#loginTabBtn').click(function(){
     $('#loginForm').show();
     $('#registerForm').hide();
 });
+
 // REGISTER TAB BUTTON CLICK EVENT
 $('#registerTabBtn').click(function(){
     event.preventDefault();
