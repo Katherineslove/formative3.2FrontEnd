@@ -45,6 +45,42 @@ checkField = (field) => {
 	}
 }
 
+// THIS NEEDS TO BE CREATED!!!!!!!!!!!!
+		// getProjects = () => {
+		//     $.ajax({
+		//         url: `${url}/allProducts`,
+		//         type: 'GET',
+		//         dataType: 'json',
+		//         success:function(data){
+		//             $('#productList').empty();
+		//             for (var i = 0; i < data.length; i++) {
+		//                 let product = `
+		//                     <li
+		//                         class="list-group-item d-flex justify-content-between align-items-center productItem"
+		//                         data-id="${data[i]._id}"
+		//                     >
+		//                         <span class="productName">$${data[i].price} | ${data[i].name}</span>`;
+		//
+		//                         if(sessionStorage['userName']){
+		//                             if(sessionStorage['userID'] === data[i].user_id){
+		//                                 product += `<div>
+		//                                                 <button class="btn btn-info editBtn">Edit</button>
+		//                                                 <button class="btn btn-danger removeBtn">Remove</button>
+		//                                             </div>`;
+		//                             }
+		//                         }
+		//                 product += `</li>`;
+		//
+		//                 $('#productList').append(product);
+		//             }
+		//         },
+		//         error: function(err){
+		//             console.log(err);
+		//             console.log('something went wrong with getting all the products');
+		//         }
+		//     })
+		// }
+
 // do stuff when the add product button is clicked
 $('#addProjectButton').click(function(){
 	event.preventDefault();
@@ -191,35 +227,36 @@ $('#loginForm').submit(function(){
             username: username,
             password: password
         },
+				success:function(result){
+					if(result === 'invalid user'){
+							console.log('cannot find user with that username');
+					} else if(result === 'invalid password'){
+							console.log('Your password is wrong');
+					} else {
+							console.log(result);
+							console.log('ok good to go');
+
+							sessionStorage.setItem('userID', result['_id']);
+			        sessionStorage.setItem('userName', result['username']);
+			        sessionStorage.setItem('userEmail', result['email']);
+
+						 getProjects();
+
+							$('#authForm').modal('hide');
+							$('#loginBtn').hide();
+							$('#logoutBtn').removeClass('d-none')
+					}
+				},
+				error:function(err){
+	        console.log(err);
+	        console.log('Something went wrong with logging in.');
+        }
 			})
 
 
 
     }
 });
-
-
-
-// 	if ($('#lUsername').hasClass('is-invalid') || $('#lPassword').hasClass('is-invalid')){
-// 		alert('Please enter the required value(s).');
-// 	}
-// 	// else {
-// 	// 	// server-side validation of password: if (lPassword !== lConfirmPassword) {
-// 	// 	// 	alert('Sorry, your passwords do not match.');
-// 	// 	}
-// 		else {
-// 			console.log('ok good to go');
-// 			$('#authForm').modal('hide');
-// 			$('#loginBtn').hide();
-// 			$('#logoutBtn').removeClass('d-none')
-// 			// Ajax request
-// 		}
-// 	// }
-// 	// if (rpassword !== rconfirmPassword){
-// 	// 	alert('Please enter the required value(s).')
-// 		// ajax post request to create new database item
-// 	// }
-// });
 
 // Log out button
 $('#logoutBtn').click(function(){
@@ -230,7 +267,8 @@ $('#logoutBtn').click(function(){
       return;
     }
 
-    getProductsData();
+   getProjects();
+
     $('#loginBtn').show();
     $('#logoutBtn').addClass('d-none');
     $('#addProductSection').addClass('d-none');
