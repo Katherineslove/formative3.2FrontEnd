@@ -19,36 +19,50 @@ $(document).ready(function(){
     }
   });
 
+	// check if a field has a value
+	checkField = (field) => {
+		$(field).removeClass('is-invalid');
+
+		if (!field.val()) {
+			$(field).addClass('is-invalid');
+		}
+	}
+
 	// do stuff when the add product button is clicked
-	$('#addProductButton').click(function(){
-		console.log('got a click');
-
+	$('#addProjectButton').click(function(){
 		event.preventDefault();
-		let project_id;
-		let author_id;
-		let author_name;
-		let project_name;
-		let screenshotURL;
-		let link;
 
-		$.ajax({
-			url: `${url}/addProject`,
-			type: 'POST',
-			data: {
-				projectId: project_id,
-				// authorId: author_id,
-				authorName: author_name,
-				projectName: project_name,
-				screenshotURL: screenshot_URL
-			},
-			success: function(data){
-				console.log(data);
-				console.log('sent a request');
-				},
-			error: function(err){
-				console.log('got an error!');
-				console.log(err);
-			}
-		});
+		let project_name = $('#projectName').val();
+		let author_name = $('#authorName').val();
+		let screenshot_URL = $('#imageURL').val();
+		let link = $('#codeURL').val();
+
+		checkField($('#projectName'));
+		checkField($('#authorName'));
+		checkField($('#imageURL'));
+		checkField($('#codeURL'));
+
+		if ($('.invalid-feedback').length) {
+			alert('Please enter the required values.');
+		} else {
+			console.log(project_name);
+			console.log(author_name);
+			console.log(screenshot_URL);
+			console.log(link);
+		}
+	});
+
+	// check if the form fields are valid on change
+	$('#projectName').change(function(){
+		checkField($('#projectName'));
+	});
+	$('#authorName').change(function(){
+		checkField($('#authorName'));
+	});
+	$('#imageURL').change(function(){
+		checkField($('#imageURL'));
+	});
+	$('#codeURL').change(function(){
+		checkField($('#codeURL'));
 	});
 });
