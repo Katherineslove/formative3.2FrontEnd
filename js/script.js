@@ -92,22 +92,21 @@ $('#registerForm').submit(function(){
     } else {
 		console.log('registering is OK!');
 		// AJAX REQUEST
-        // $.ajax({
-        //     url: `${url}/users`,
-        //     type: 'POST',
-        //     data: {
-        //         username: username,
-        //         email: email,
-        //         password: password
-        //     },
-        //     success:function(result){
-        //         console.log(result);
-        //     },
-        //     error:function(err){
-        //         console.log(err);
-        //         console.log('Something went wrong with registering a new user');
-        //     }
-        // })
+        $.ajax({
+            url: `${url}/authors`,
+            type: 'POST',
+            data: {
+                username: username,
+                password: password
+            },
+            success:function(result){
+                console.log(result);
+            },
+            error:function(err){
+                console.log(err);
+                console.log('Something went wrong with registering a new user');
+            }
+        })
     }
 });
 
