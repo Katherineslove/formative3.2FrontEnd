@@ -32,23 +32,15 @@ $(document).ready(function(){
 	$('#addProjectButton').click(function(){
 		event.preventDefault();
 
-		let project_name = $('#projectName').val();
-		let author_name = $('#authorName').val();
-		let screenshot_URL = $('#imageURL').val();
-		let link = $('#codeURL').val();
-
 		checkField($('#projectName'));
 		checkField($('#authorName'));
 		checkField($('#imageURL'));
 		checkField($('#codeURL'));
 
-		if ($('.invalid-feedback').length) {
-			alert('Please enter the required values.');
+		if ($('#projectName').hasClass('is-invalid') || $('#authorName').hasClass('is-invalid') || $('#imageURL').hasClass('is-invalid') || $('#codeURL').hasClass('is-invalid')){
+			alert('Please enter the required value(s).')
 		} else {
-			console.log(project_name);
-			console.log(author_name);
-			console.log(screenshot_URL);
-			console.log(link);
+			// post request to create new database item 
 		}
 	});
 
